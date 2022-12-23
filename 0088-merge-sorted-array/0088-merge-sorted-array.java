@@ -3,7 +3,7 @@ class Solution {
         int a = m - 1;
         int b = n - 1;
         for(int i = nums1.length - 1; b >= 0; i--){
-            if(i >= 0 && a >= 0 && nums1[a] > nums2[b]){
+            if(a >= 0 && nums1[a] > nums2[b]){
                 nums1[i] = nums1[a--];
             }
             else{
