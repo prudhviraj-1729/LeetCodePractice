@@ -3,7 +3,6 @@ from collections import deque
 
 def printFirstNegativeInteger( arr, n, k):
     # code here
-            
     q = deque()
     i, j = 0, 0
     res = []
@@ -18,11 +17,10 @@ def printFirstNegativeInteger( arr, n, k):
                 res.append(0)
             else:
                 res.append(q[0])
-                if q[0] == arr[i]:
+                if arr[i] == q[0]:
                     q.popleft()
             i += 1
             j += 1
-            
     return res
 
 #{ 
