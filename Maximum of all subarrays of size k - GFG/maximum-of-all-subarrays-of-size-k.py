@@ -6,25 +6,25 @@ class Solution:
     def max_of_subarrays(self,arr,n,k):
         
         res = []
-        q = []
-
-    # Process the first k elements
+        q = deque()
+    
+        # Process the first k elements
         for i in range(k):
-        # Remove indices of elements smaller than the current element from the right end of the list
+            # Remove all elements smaller than the current element from the right end of the deque
             while q and arr[i] > arr[q[-1]]:
                 q.pop()
             q.append(i)
-
-    # Process the remaining elements
+    
+        # Process the remaining elements
         for i in range(k, len(arr)):
-            # The front element of the list is the maximum for the current window
+            # The front element of the deque is the maximum for the current window
             res.append(arr[q[0]])
     
-            # Remove indices of elements from the front of the list that are outside the current window
-            if q[0] == i - k:
-                q.pop(0)
+            # Remove elements from the front of the deque that are outside the current window
+            while q and q[0] <= i - k:
+                q.popleft()
     
-            # Remove indices of elements smaller than the current element from the right end of the list
+            # Remove all elements smaller than the current element from the right end of the deque
             while q and arr[i] > arr[q[-1]]:
                 q.pop()
     
