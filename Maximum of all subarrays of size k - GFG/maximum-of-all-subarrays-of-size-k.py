@@ -15,18 +15,15 @@ class Solution:
             while q and arr[j] >= arr[q[-1]]:
                 q.pop()
             q.append(j)
-    
+            
             if j - i + 1 < k:
                 j += 1
             elif j - i + 1 == k:
                 res.append(arr[q[0]])
-    
                 if q[0] == i:
                     q.popleft()
-    
-                i += 1
                 j += 1
-    
+                i +=1 
         return res
 
 #{ 
