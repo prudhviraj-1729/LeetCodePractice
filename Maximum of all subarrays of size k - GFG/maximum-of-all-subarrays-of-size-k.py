@@ -8,30 +8,24 @@ class Solution:
         res = []
         q = deque()
     
-        # Process the first k elements
-        for i in range(k):
-            # Remove all elements smaller than the current element from the right end of the deque
-            while q and arr[i] > arr[q[-1]]:
+        i = 0
+        j = 0
+    
+        while j < len(arr):
+            while q and arr[j] >= arr[q[-1]]:
                 q.pop()
-            q.append(i)
+            q.append(j)
     
-        # Process the remaining elements
-        for i in range(k, len(arr)):
-            # The front element of the deque is the maximum for the current window
-            res.append(arr[q[0]])
+            if j - i + 1 < k:
+                j += 1
+            elif j - i + 1 == k:
+                res.append(arr[q[0]])
     
-            # Remove elements from the front of the deque that are outside the current window
-            while q and q[0] <= i - k:
-                q.popleft()
+                if q[0] == i:
+                    q.popleft()
     
-            # Remove all elements smaller than the current element from the right end of the deque
-            while q and arr[i] > arr[q[-1]]:
-                q.pop()
-    
-            q.append(i)
-    
-        # Add the maximum for the last window
-        res.append(arr[q[0]])
+                i += 1
+                j += 1
     
         return res
 
