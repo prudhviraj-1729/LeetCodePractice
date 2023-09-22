@@ -12,8 +12,8 @@ class Solution:
                 if nums[mid] < target:
                     l = mid + 1
                 else:
-                    r = mid 
-            if l < len(arr) and arr[l] == target:
+                    r = mid
+            if l < len(nums) and nums[l] == target:
                 return l
             return -1
         
@@ -25,7 +25,7 @@ class Solution:
                     l = mid + 1
                 else:
                     r = mid
-            if r > 0 and arr[r - 1] == target:
+            if r > 0 and nums[r - 1] == target:
                 return r - 1
             return -1
         
