@@ -1,24 +1,24 @@
 #User function Template for python3
 
 class Solution:
-    def Search(self, n, nums, target):
+    def Search(self, n, arr, k):
         # code here
-        l, r = 0, len(nums)
+        l, r = 0, len(arr)
         while l < r:
             mid = l + (r - l) // 2
-            if nums[mid] == target:
+            if arr[mid] == k:
                 return 1
-            if nums[l] == nums[mid]:
+            if arr[l] == arr[mid]:
                 l += 1
                 continue
-            elif nums[l] < nums[mid]:
-                if target < nums[l] or target > nums[mid]:
+            elif arr[l] < arr[mid]:
+                if k < arr[l] or k > arr[mid]:
                     l = mid + 1
                 else:
                     r = mid
             else:
-                if target > nums[r - 1] or target < nums[mid]:
-                    r = mid
+                if k > arr[r - 1] or k < arr[mid]:
+                    r = mid 
                 else:
                     l = mid + 1
         return 0
