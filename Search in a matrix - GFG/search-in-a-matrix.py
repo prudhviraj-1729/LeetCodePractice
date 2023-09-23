@@ -2,12 +2,13 @@
 class Solution:
 	def matSearch(self,matrix, N, M, target):
 		# Complete this function
-        x, y = len(matrix[0]) - 1, 0
-        while x >= 0 and y < len(matrix):
-            if matrix[y][x] > target:
-                x -= 1
-            elif matrix[y][x] < target:
-                y += 1
+        l, r = 0, len(matrix[0]) - 1
+        
+        while l < len(matrix) and r >= 0:
+            if matrix[l][r] < target:
+                l += 1
+            elif matrix[l][r] > target:
+                r -= 1
             else:
                 return 1
         return 0
