@@ -20,10 +20,10 @@ class Solution:
             visited_array[start_point] = "true"
             while queue:
                 x = queue.popleft()
-                for i in range(len(graph_list[x])):
-                    if visited_array[graph_list[x][i]] == "false":
-                        visited_array[graph_list[x][i]] = "true"
-                        queue.append(graph_list[x][i])
+                for i in graph_list[x]:
+                    if visited_array[i] == "false":
+                        visited_array[i] = "true"
+                        queue.append(i)
         
         count = 0
         for i in range(1, len(visited_array)):
