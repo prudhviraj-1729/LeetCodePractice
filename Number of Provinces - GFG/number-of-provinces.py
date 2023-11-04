@@ -6,32 +6,32 @@ class Solution:
     def numProvinces(self, adj, V):
         # code here 
         visited = set()
-        graph_list = defaultdict(list)
+        graph = defaultdict(list)
         for i in range(len(adj)):
             for j in range(i + 1, len(adj)):
                 if adj[i][j] == 1:
-                    graph_list[i + 1].append(j + 1)
-                    graph_list[j + 1].append(i + 1)
+                    graph[i + 1].append(j + 1)
+                    graph[j + 1].append(i + 1)
         
-        def bfs(start_point, graph_list, visited):
+        def bfs(start_point, graph, visited):
             queue = deque()
             queue.append(start_point)
             visited.add(start_point)
             
             while queue:
                 x = queue.popleft()
-                for i in graph_list[x]:
+                for i in graph[x]:
                     if i not in visited:
                         visited.add(i)
                         queue.append(i)
+        
         count = 0
         for i in range(1, V + 1):
             if i not in visited:
-                bfs(i, graph_list, visited)
+                bfs(i, graph, visited)
                 count += 1
         return count
-                
-        
+
 #{ 
  # Driver Code Starts
 #Initial Template for Python 3
