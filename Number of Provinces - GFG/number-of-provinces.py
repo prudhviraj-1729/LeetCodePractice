@@ -1,10 +1,11 @@
 #User function Template for python3
 from collections import defaultdict
+from collections import deque
 
 class Solution:
     def numProvinces(self, adj, V):
         # code here 
-        visited_array = ["false" for i in range(V + 1)]
+        visited = set()
         graph_list = defaultdict(list)
         for i in range(len(adj)):
             for j in range(i + 1, len(adj)):
@@ -12,19 +13,25 @@ class Solution:
                     graph_list[i + 1].append(j + 1)
                     graph_list[j + 1].append(i + 1)
         
-        def dfs(index, graph_list, visited_array):
-            visited_array[index] = "true"
-            for i in graph_list[index]:
-                if visited_array[i] == "false":
-                    dfs(i, graph_list, visited_array)
-        
+        def bfs(start_point, graph_list, visited):
+            queue = deque()
+            queue.append(start_point)
+            visited.add(start_point)
+            
+            while queue:
+                x = queue.popleft()
+                for i in graph_list[x]:
+                    if i not in visited:
+                        visited.add(i)
+                        queue.append(i)
         count = 0
-        for i in range(1, len(visited_array)):
-            if visited_array[i] == "false":
-                dfs(i, graph_list, visited_array)
+        for i in range(1, V + 1):
+            if i not in visited:
+                bfs(i, graph_list, visited)
                 count += 1
         return count
-
+                
+        
 #{ 
  # Driver Code Starts
 #Initial Template for Python 3
