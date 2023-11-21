@@ -14,26 +14,23 @@ class Solution:
                     break
 
         V = set("".join(alien_dict))
-        visited = Counter()
+        visited = set()
         count = 0
         ans = []
         
         def dfs(node):
-            if visited[node] == 1:
-                count += 1
-            if visited[node] == 0:
-                visited[node] = 1
-                for child in graph[node]:
+            nonlocal count
+            visited.add(node)
+            for child in graph[node]:
+                if child not in visited:
+                    visited.add(child)
                     dfs(child)
-                visited[node] = 2
-                ans.append(node)
+            ans.append(node)
         
         for node in V:
-            if visited[node] == 0:
+            if node not in visited:
                 dfs(node)
-            
-        if count > 1:
-            return []
+        
         return ans[::-1]
         
     
