@@ -15,11 +15,9 @@ class Solution:
 
         V = set("".join(alien_dict))
         visited = set()
-        count = 0
         ans = []
         
         def dfs(node):
-            nonlocal count
             visited.add(node)
             for child in graph[node]:
                 if child not in visited:
