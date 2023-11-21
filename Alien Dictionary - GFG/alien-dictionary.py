@@ -28,7 +28,10 @@ class Solution:
         for node in V:
             if node not in visited:
                 dfs(node)
-        
+                
+        if len(visited) != len(V):
+            return []
+            
         return ans[::-1]
         
     
