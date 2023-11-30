@@ -12,6 +12,7 @@ class Solution:
             adj[x].append([y, z])
         
         priority_queue = [(0, 0)]
+        visited = set()
         
         distances = [float("inf") for i in range(n)]
         distances[0] = 0
@@ -19,8 +20,10 @@ class Solution:
         while priority_queue:
             current_distance, current_node = heapq.heappop(priority_queue)
             
-            if distances[current_node] < current_distance:
+            if current_node in visited: 
                 continue
+            
+            visited.add(current_node)
             
             for neighbour_node, neighbour_distance in adj[current_node]:
                 new_neighbour_distance = current_distance + neighbour_distance
