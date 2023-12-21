@@ -1,6 +1,5 @@
 #User function Template for python3
 
-
 '''
 # Node Class:
 class Node:
@@ -13,14 +12,21 @@ class Node:
 #Function to return a list containing elements of left view of the binary tree.
 def LeftView(root):
     # code here
-    def dfs(node, depth, res):
-        if not node: return 
-        if len(res) == depth: res.append(node.data)
-        dfs(node.left, depth + 1, res)
-        dfs(node.right, depth + 1, res)
-    
     res = []
-    dfs(root, 0, res)
+    
+    queue = deque()
+    if root:
+        queue.append(root)
+    
+    while queue:
+        for i in range(len(queue)):
+            node_queue = queue.popleft()
+            if node_queue.right:
+                queue.append(node_queue.right)
+            if node_queue.left:
+                queue.append(node_queue.left)
+        res.append(node_queue.data)
+    
     return res
 
 #{ 
