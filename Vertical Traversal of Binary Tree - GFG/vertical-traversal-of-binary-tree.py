@@ -23,7 +23,6 @@ class Solution:
         
         dfs(root, 0, 0)
         out = []
-        # print(sorted(dic.values()))
         for i in range(self.min_l, self.max_l + 1):
             out += [j for i,j in sorted(dic[i], key=lambda x: x[0])]
         return out
