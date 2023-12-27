@@ -17,8 +17,8 @@ class Solution:
                 return 0
             
             old_val = node.data
-            
             node.data = dfs(node.left) + dfs(node.right)
+            
             return old_val + node.data
         
         return dfs(root)
