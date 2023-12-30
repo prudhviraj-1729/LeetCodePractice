@@ -119,7 +119,6 @@ class Solution:
             return found
                     
         findAncestors(root, target)
-                
         return res
   
 
