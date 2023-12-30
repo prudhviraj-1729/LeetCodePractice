@@ -99,24 +99,26 @@ class Solution:
         found = False
         res = []
         
-        def printallAncestors(root, num):
+        def printallAncestors(node, num):
             nonlocal found
-            if root is not None:
-                printallAncestors(root.left, num)
+            
+            if node:
+                printallAncestors(node.left, num)
         
-                if root.data == num and found is not True:
-                    found  = True
+                if node.data == num and not found:
+                    found = True
         
-                if found is not True:
-                    printallAncestors(root.right, num)
+                if not found:
+                    printallAncestors(node.right, num)
         
-                if found is True and root.data != num:
-                    res.append(root.data)
+                if found and node.data != num:
+                    res.append(node.data)
                     
         printallAncestors(root, target)
                 
         return res
   
+
 
 #{ 
  # Driver Code Starts.
