@@ -99,22 +99,23 @@ class Solution:
         found = False
         res = []
         
-        def printallAncestors(node, num):
+        def findAncestors(node, num):
             nonlocal found
-            
-            if node:
-                printallAncestors(node.left, num)
+            if not node:
+                return
         
-                if node.data == num and not found:
-                    found = True
-        
-                if not found:
-                    printallAncestors(node.right, num)
-        
-                if found and node.data != num:
-                    res.append(node.data)
+            findAncestors(node.left, num)
+    
+            if node.data == num and not found:
+                found = True
+    
+            if not found:
+                findAncestors(node.right, num)
+    
+            if found and node.data != num:
+                res.append(node.data)
                     
-        printallAncestors(root, target)
+        findAncestors(root, target)
                 
         return res
   
