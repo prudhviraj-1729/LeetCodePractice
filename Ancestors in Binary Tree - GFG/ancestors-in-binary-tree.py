@@ -115,6 +115,8 @@ class Solution:
     
             if found and node.data != num:
                 res.append(node.data)
+            
+            return found
                     
         findAncestors(root, target)
                 
