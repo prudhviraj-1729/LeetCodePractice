@@ -101,14 +101,15 @@ class Solution:
         
         def findAncestors(node, num):
             nonlocal found
+            
             if not node:
                 return
-        
+            
             findAncestors(node.left, num)
-    
+            
             if node.data == num and not found:
                 found = True
-    
+                
             if not found:
                 findAncestors(node.right, num)
     
