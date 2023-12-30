@@ -96,11 +96,13 @@ class Solution:
         :return: None, print the space separated post ancestors of given target., don't print new line
         '''
         #code here
+        
         found = False
         res = []
         
         def findAncestors(node, num):
-            nonlocal found
+            nonlocal found 
+            nonlocal res
             
             if not node:
                 return
@@ -109,19 +111,19 @@ class Solution:
             
             if node.data == num and not found:
                 found = True
-                
+            
             if not found:
                 findAncestors(node.right, num)
-    
+            
             if found and node.data != num:
                 res.append(node.data)
-            
+                
             return found
-                    
+            
         findAncestors(root, target)
         return res
+        
   
-
 
 #{ 
  # Driver Code Starts.
